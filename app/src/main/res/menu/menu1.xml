@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/losuj"
+        android:icon="@drawable/baseline_arrow_circle_up_24"
+        android:title="@string/losuj"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/newtonraphson"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/NewtonRaphson"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/montecarlo"
+        android:icon="@drawable/baseline_align_vertical_top_24"
+        android:title="@string/MonteCarlo"
+        app:showAsAction="never"
+        />
+</menu>

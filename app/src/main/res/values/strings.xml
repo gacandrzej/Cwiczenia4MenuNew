@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="losuj">losuj</string>
+    <string name="NewtonRaphson">Newton-Raphson</string>
+    <string name="MonteCarlo">MonteCarlo</string>
+</resources>

@@ -19,4 +19,16 @@
         android:title="@string/MonteCarlo"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/sortzliczanie"
+        android:icon="@drawable/baseline_align_vertical_top_24"
+        android:title="@string/sortowaniePrzezZliczanie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/aboutAuthor"
+        android:icon="@drawable/baseline_align_vertical_top_24"
+        android:title="@string/oAutorze"
+        app:showAsAction="never"
+        />
 </menu>

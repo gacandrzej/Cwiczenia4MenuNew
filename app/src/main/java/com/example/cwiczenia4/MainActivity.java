@@ -3,6 +3,8 @@ package com.example.cwiczenia4;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,8 +49,33 @@ Button newtonR;
             case R.id.losuj: LosujLiczby2(); return true;
             case R.id.newtonraphson: newtonRaphson(); return true;
             case R.id.montecarlo: monteCarlo(); return true;
+            case R.id.sortzliczanie: sortZlicz(); return true;
+            case R.id.aboutAuthor: aboutAuthor(); return true;
             default:   return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void sortZlicz() {
+    }
+
+    private void aboutAuthor() {
+        AlertDialog builder = new AlertDialog.Builder(this)
+                .setMessage("Author: Andrzej Gac")
+                .setTitle("---Simple alert application---")
+                .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("menu123","------------------------> ok");
+                    }
+                })
+                .setPositiveButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("menu123","------------------------> cancel");
+                    }
+                })
+                .create();
+        builder.show();
     }
 
     private void monteCarlo() {
@@ -58,22 +85,23 @@ Button newtonR;
     private void newtonRaphson() {
         Toast.makeText(this, "NewtonRaphson()", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, NR.class);
-        intent.putExtra("liczba", 26);
+        intent.putExtra("liczba", 9.0);
         intent.putExtra("precyzja", 0.0001);
         startActivity(intent);
         Log.v("menu123","<--------------- NewtonRaphson()");
-
     }
 
     private void LosujLiczby2() {
         Toast.makeText(this, "z menu", Toast.LENGTH_SHORT).show();
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
+
         HashSet<Integer> hashSet = new HashSet<>();
         while (hashSet.size()<6){
             Integer nowa = 1+ random.nextInt(49);
             hashSet.add(nowa);
         }
+
         list.addAll(hashSet);
         Collections.sort(list);
         String napis = "";

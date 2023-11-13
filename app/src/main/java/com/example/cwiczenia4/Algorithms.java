@@ -26,7 +26,7 @@ public class Algorithms {
         return a;
     }
     public void countingSort(){}
-    public double monteCarlo(){}
+    public double monteCarlo(){ return 1.0;}
 
     public String random6(){
         List<Integer> list = new ArrayList<>();

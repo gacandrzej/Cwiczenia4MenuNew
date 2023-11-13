@@ -91,7 +91,7 @@ Button newtonR;
         Log.v("menu123","<--------------- NewtonRaphson()");
     }
 
-    private void LosujLiczby2() {
+    public void LosujLiczby2() {
         Toast.makeText(this, "z menu", Toast.LENGTH_SHORT).show();
         List<Integer> list = new ArrayList<>();
         Random random = new Random();

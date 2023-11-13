@@ -31,25 +31,33 @@ public class NR extends AppCompatActivity {
 //        textView.setText(liczba);
         Log.d("menu123","<-------------liczba i precyzja: "+String.format("%.9f", l)+" "+String.format("%.9f", prec));
         //TextView textView2 = findViewById(R.id.pierwiastek);
-        double pierwiastek = newtonRaphson(l,prec);
+        double pierwiastek = new Algorithms().newtonRaphson(l,prec);
        // textView2.setText(String.valueOf(pierwiastek));
         Log.d("menu123","<-------------pierwiastek---------------------->"+pierwiastek);
     }
 
-    private double newtonRaphson(double x, double d) {
-        double a=5;
-        while(Math.abs(x/a-a)>d){
-            a=(x/a+a)/2;
-            Log.i("NR" ,x/a + " " +a );
-        }
 
-        Toast.makeText(getApplicationContext(),
-                "Newton-Raphson",
-                Toast.LENGTH_SHORT).show();
-        Log.i("NR","------------------");
-        //
-        return a;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu1, menu);
+        return true;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.losuj:
+                MainActivity mainActivity = new MainActivity();
+                mainActivity.LosujLiczby2();
+            return true;
+//            case R.id.newtonraphson: newtonRaphson(); return true;
+//            case R.id.montecarlo: monteCarlo(); return true;
+//            case R.id.sortzliczanie: sortZlicz(); return true;
+//            case R.id.aboutAuthor: aboutAuthor(); return true;
+            default:   return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

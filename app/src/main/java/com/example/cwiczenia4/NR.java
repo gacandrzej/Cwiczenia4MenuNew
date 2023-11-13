@@ -13,13 +13,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class NR extends AppCompatActivity {
-
+    Algorithms algorithms;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nr);
-
+        algorithms = new Algorithms();
         setSupportActionBar(findViewById(R.id.toolbar2));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
@@ -49,13 +49,17 @@ public class NR extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.losuj:
-                MainActivity mainActivity = new MainActivity();
-                mainActivity.LosujLiczby2();
-            return true;
-//            case R.id.newtonraphson: newtonRaphson(); return true;
-//            case R.id.montecarlo: monteCarlo(); return true;
-//            case R.id.sortzliczanie: sortZlicz(); return true;
-//            case R.id.aboutAuthor: aboutAuthor(); return true;
+                            algorithms.random6();
+                            return true;
+            case R.id.newtonraphson:
+                                    algorithms.newtonRaphson(25,0.001);
+                                    return true;
+           case R.id.montecarlo:
+                               algorithms.monteCarlo();
+                               return true;
+            case R.id.sortzliczanie:
+                                    algorithms.countingSort();
+                                    return true;
             default:   return super.onOptionsItemSelected(item);
         }
     }

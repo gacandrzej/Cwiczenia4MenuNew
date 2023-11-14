@@ -10,29 +10,27 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-public class NR extends AppCompatActivity {
+public class NewtonRaphson extends AppCompatActivity {
     Algorithms algorithms;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nr);
+        setContentView(R.layout.activity_newton_raphson);
         algorithms = new Algorithms();
-        setSupportActionBar(findViewById(R.id.toolbar2));
+        setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         double l = intent.getDoubleExtra("liczba",0);
         double prec = intent.getDoubleExtra("precyzja",0);
 
-        // Capture the layout's TextView and set the string as its text
-//        TextView textView = findViewById(R.id.extra);
-//        textView.setText(liczba);
-        Log.d("menu123","<-------------liczba i precyzja: "+String.format("%.9f", l)+" "+String.format("%.9f", prec));
-        //TextView textView2 = findViewById(R.id.pierwiastek);
+
+        Log.d("menu123","<-------------liczba i precyzja: "
+                +String.format("%.9f", l)+" "+String.format("%.9f", prec));
+
         double pierwiastek = new Algorithms().newtonRaphson(l,prec);
-       // textView2.setText(String.valueOf(pierwiastek));
+
         Log.d("menu123","<-------------pierwiastek---------------------->"+pierwiastek);
     }
 
@@ -55,7 +53,7 @@ public class NR extends AppCompatActivity {
                                     algorithms.newtonRaphson(25,0.001);
                                     return true;
            case R.id.montecarlo:
-                               algorithms.monteCarlo();
+                               algorithms.monteCarlo(1000000.0);
                                return true;
             case R.id.sortzliczanie:
                                     algorithms.countingSort();

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Algorithms {
-
+    Random random;
     public double newtonRaphson(double x, double d) {
         double a=5;
         while(Math.abs(x/a-a)>d){
@@ -26,7 +26,20 @@ public class Algorithms {
         return a;
     }
     public void countingSort(){}
-    public double monteCarlo(){ return 1.0;}
+    public double monteCarlo(double n){
+        random = new Random();
+        double T=0.0;
+        double R=0.0;
+        double a;
+        double b;
+        do{
+            a = random.nextDouble();
+            b = random.nextDouble();
+            if ( Math.pow(a,2)+Math.pow(b,2) < 1) T++;
+            R++;
+        }while(R<n);
+        return 4.0*T/R;
+    }
 
     public String random6(){
         List<Integer> list = new ArrayList<>();

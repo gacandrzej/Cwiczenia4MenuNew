@@ -15,14 +15,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-
 public class MainActivity extends AppCompatActivity {
-Button newtonR;
+    Button newtonR;
+    Algorithms algorithms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +26,7 @@ Button newtonR;
 
         newtonR = findViewById(R.id.button2);
         newtonR.setOnClickListener(v->{
-            newtonRaphson();
+            intentNewtonRaphson();
         });
     }
 
@@ -46,16 +41,32 @@ Button newtonR;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.losuj: LosujLiczby2(); return true;
-            case R.id.newtonraphson: newtonRaphson(); return true;
-            case R.id.montecarlo: monteCarlo(); return true;
-            case R.id.sortzliczanie: sortZlicz(); return true;
+            case R.id.losuj:
+                algorithms.random6();
+                return true;
+            case R.id.newtonraphson:
+                intentNewtonRaphson();
+                return true;
+            case R.id.montecarlo:
+                 intentMonteCarlo();
+                return true;
+            case R.id.sortzliczanie:
+                 intentCountingSort();
+                return true;
             case R.id.aboutAuthor: aboutAuthor(); return true;
             default:   return super.onOptionsItemSelected(item);
         }
     }
 
-    private void sortZlicz() {
+    private void intentCountingSort() {
+
+    }
+
+    private void intentMonteCarlo() {
+        Intent intent = new Intent(this,MonteCarlo.class);
+        intent.putExtra("ilosc_punktow", 1000000.0);
+        startActivity(intent);
+        Log.v("menu123","<--------------- monteCarlo()");
     }
 
     private void aboutAuthor() {
@@ -78,36 +89,16 @@ Button newtonR;
         builder.show();
     }
 
-    private void monteCarlo() {
-
-    }
-
-    private void newtonRaphson() {
+    private void intentNewtonRaphson() {
         Toast.makeText(this, "NewtonRaphson()", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, NR.class);
+        Intent intent = new Intent(this, NewtonRaphson.class);
         intent.putExtra("liczba", 9.0);
         intent.putExtra("precyzja", 0.0001);
         startActivity(intent);
         Log.v("menu123","<--------------- NewtonRaphson()");
     }
 
-    public void LosujLiczby2() {
-        Toast.makeText(this, "z menu", Toast.LENGTH_SHORT).show();
-        List<Integer> list = new ArrayList<>();
-        Random random = new Random();
 
-        HashSet<Integer> hashSet = new HashSet<>();
-        while (hashSet.size()<6){
-            Integer nowa = 1+ random.nextInt(49);
-            hashSet.add(nowa);
-        }
-
-        list.addAll(hashSet);
-        Collections.sort(list);
-        String napis = "";
-        for (int i : list) napis += i + " ";
-        Log.v("menu123","<--------------- losuj liczby, posortowane: " + napis);
-    }
 
     public void LosujLiczby(View view) {
 

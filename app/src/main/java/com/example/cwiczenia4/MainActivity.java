@@ -40,21 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.losuj:
-                algorithms.random6();
-                return true;
-            case R.id.newtonraphson:
-                intentNewtonRaphson();
-                return true;
-            case R.id.montecarlo:
-                 intentMonteCarlo();
-                return true;
-            case R.id.sortzliczanie:
-                 intentCountingSort();
-                return true;
-            case R.id.aboutAuthor: aboutAuthor(); return true;
-            default:   return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.losuj) {
+            algorithms.random6();
+            return true;
+        } else if (item.getItemId() == R.id.newtonraphson) {
+            intentNewtonRaphson();
+            return true;
+        } else if (item.getItemId() == R.id.montecarlo) {
+            intentMonteCarlo();
+            return true;
+        } else if (item.getItemId() == R.id.sortzliczanie) {
+            intentCountingSort();
+            return true;
+        } else if (item.getItemId() == R.id.aboutAuthor) {
+            aboutAuthor();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 

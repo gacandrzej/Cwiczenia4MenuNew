@@ -11,18 +11,15 @@ import java.util.Random;
 
 public class Algorithms {
     Random random;
+
     public double newtonRaphson(double x, double d) {
         double a=5;
         while(Math.abs(x/a-a)>d){
             a=(x/a+a)/2;
             Log.i("NR" ,x/a + " " +a );
         }
-
-//        Toast.makeText(getApplicationContext(),
-//                "Newton-Raphson",
-//                Toast.LENGTH_SHORT).show();
         Log.i("NR","------------------");
-        //
+        Log.d(TAG, "newtonRaphson() returned: " + a);
         return a;
     }
     public void countingSort(){}

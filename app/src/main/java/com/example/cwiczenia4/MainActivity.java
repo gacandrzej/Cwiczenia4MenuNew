@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button newtonR;
     Algorithms algorithms;
+    public static final String TAG = "Marcin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         newtonR.setOnClickListener(v->{
             intentNewtonRaphson();
         });
+        algorithms = new Algorithms();
     }
 
     @Override

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Algorithms {
     Random random;
@@ -19,7 +20,7 @@ public class Algorithms {
             Log.i("NR" ,x/a + " " +a );
         }
         Log.i("NR","------------------");
-        Log.d(TAG, "newtonRaphson() returned: " + a);
+        Log.d("NR", "newtonRaphson() returned: " + a);
         return a;
     }
     public void countingSort(){}
@@ -39,19 +40,19 @@ public class Algorithms {
     }
 
     public String random6(){
+        Log.d(MainActivity.TAG, "random6: -----------------------------");
         List<Integer> list = new ArrayList<>();
-        Random random = new Random();
+        random = new Random();
 
-        HashSet<Integer> hashSet = new HashSet<>();
+        Set<Integer> hashSet = new HashSet<>();
         while (hashSet.size()<6){
-            Integer nowa = 1+ random.nextInt(49);
-            hashSet.add(nowa);
+            hashSet.add(1+ random.nextInt(49));
         }
         list.addAll(hashSet);
         Collections.sort(list);
         String napis = "";
         for (int i : list) napis += i + " ";
-        Log.v("menu123","<--------------- losuj liczby, posortowane: " + napis);
+        Log.v(MainActivity.TAG,"<--------------- losuj liczby, posortowane: " + napis);
         return napis;
     }
 

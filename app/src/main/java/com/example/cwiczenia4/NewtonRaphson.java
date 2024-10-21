@@ -26,7 +26,7 @@ public class NewtonRaphson extends AppCompatActivity {
         double prec = intent.getDoubleExtra("precyzja",0);
 
 
-        Log.d("menu123","<-------------liczba i precyzja: "
+        Log.d(MainActivity.TAG,"<-------------liczba i precyzja: "
                 +String.format("%.9f", l)+" "+String.format("%.9f", prec));
 
         double pierwiastek = new Algorithms().newtonRaphson(l,prec);

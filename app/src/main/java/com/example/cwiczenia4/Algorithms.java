@@ -4,11 +4,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Algorithms {
     Random random;
@@ -20,7 +22,7 @@ public class Algorithms {
             Log.i("NR" ,x/a + " " +a );
         }
         Log.i("NR","------------------");
-        Log.d("NR", "newtonRaphson() returned: " + a);
+        Log.d(MainActivity.TAG, "newtonRaphson() returned: " + a);
         return a;
     }
     public void countingSort(){}
@@ -40,20 +42,14 @@ public class Algorithms {
     }
 
     public String random6(){
-        Log.d(MainActivity.TAG, "random6: -----------------------------");
-        List<Integer> list = new ArrayList<>();
         random = new Random();
+            Set<Integer> treeSet = new TreeSet<>();
+            while (treeSet.size()<6){
+                treeSet.add(1+ random.nextInt(48));
+            }
 
-        Set<Integer> hashSet = new HashSet<>();
-        while (hashSet.size()<6){
-            hashSet.add(1+ random.nextInt(49));
-        }
-        list.addAll(hashSet);
-        Collections.sort(list);
-        String napis = "";
-        for (int i : list) napis += i + " ";
-        Log.v(MainActivity.TAG,"<--------------- losuj liczby, posortowane: " + napis);
-        return napis;
+        Log.d(MainActivity.TAG, "random6: list:"+treeSet);
+        return "";
     }
 
 }

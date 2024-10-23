@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button newtonR;
     Algorithms algorithms;
+    Button btn_newton;
     public static final String TAG = "Marcin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        newtonR = findViewById(R.id.button2);
-        newtonR.setOnClickListener(v->{
-            intentNewtonRaphson();
+        btn_newton = findViewById(R.id.btnnewtonraphson);
+        btn_newton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: ");
+                intentNewtonRaphson();
+            }
         });
         algorithms = new Algorithms();
     }
@@ -47,9 +52,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.newtonraphson) {
             intentNewtonRaphson();
+            Log.d(TAG, "onOptionsItemSelected: ");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             return true;
         } else if (item.getItemId() == R.id.montecarlo) {
             intentMonteCarlo();
+
+            Log.d(TAG, "onOptionsItemSelected: ");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             return true;
         } else if (item.getItemId() == R.id.sortzliczanie) {
             intentCountingSort();
@@ -108,6 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Test przycisku", Toast.LENGTH_SHORT).show();
 
-        Log.v("menu123","<--------------- Test przycisku");
+        Log.v(MainActivity.TAG,"<--------------- Test przycisku");
     }
 }

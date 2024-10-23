@@ -25,12 +25,12 @@ public class MonteCarlo extends AppCompatActivity {
         Intent intent = getIntent();
 
         double ilosc_punktow = intent.getDoubleExtra("ilosc_punktow",0);
-        Log.d("menu123","<------------- ilosc punktow: "
+        Log.d(MainActivity.TAG,"<------------- ilosc punktow: "
                 +String.format("%.1f", ilosc_punktow) );
 
         double wartosc_pi = new Algorithms().monteCarlo(ilosc_punktow);
 
-        Log.d("menu123","<-------------pierwiastek---------------------->"+String.format("%.9f",wartosc_pi));
+        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"+String.format("%.9f",wartosc_pi));
     }
 
 

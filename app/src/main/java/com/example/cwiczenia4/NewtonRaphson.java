@@ -21,6 +21,7 @@ public class NewtonRaphson extends AppCompatActivity {
         algorithms = new Algorithms();
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         double l = intent.getDoubleExtra("liczba",0);
         double prec = intent.getDoubleExtra("precyzja",0);
@@ -31,7 +32,7 @@ public class NewtonRaphson extends AppCompatActivity {
 
         double pierwiastek = new Algorithms().newtonRaphson(l,prec);
 
-        Log.d("menu123","<-------------pierwiastek---------------------->"+pierwiastek);
+        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"+pierwiastek);
     }
 
 

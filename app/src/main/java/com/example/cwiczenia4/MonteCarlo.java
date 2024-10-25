@@ -26,11 +26,12 @@ public class MonteCarlo extends AppCompatActivity {
 
         double ilosc_punktow = intent.getDoubleExtra("ilosc_punktow",0);
         Log.d(MainActivity.TAG,"<------------- ilosc punktow: "
-                +String.format("%.1f", ilosc_punktow) );
+                +String.format("%.2f", ilosc_punktow) );
 
         double wartosc_pi = new Algorithms().monteCarlo(ilosc_punktow);
 
-        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"+String.format("%.9f",wartosc_pi));
+        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"
+                +String.format("%.9f",wartosc_pi));
     }
 
 
@@ -61,4 +62,13 @@ public class MonteCarlo extends AppCompatActivity {
             default:   return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        Log.v("111111", "-----------------------onSupportNavigateUp()");
+        finish();
+        return true;
+    }
+
+
 }

@@ -15,6 +15,7 @@ import java.util.Objects;
 
 public class MonteCarlo extends AppCompatActivity {
     Algorithms algorithms;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,15 @@ public class MonteCarlo extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        double ilosc_punktow = intent.getDoubleExtra("ilosc_punktow",0);
-        Log.d(MainActivity.TAG,"<------------- ilosc punktow: "
-                +String.format("%.2f", ilosc_punktow) );
+        double ilosc_punktow = intent.getDoubleExtra("ilosc_punktow", 0);
+        Log.d(MainActivity.TAG, "<------------- ilosc punktow: "
+                + String.format("%.2f", ilosc_punktow));
 
         double wartosc_pi = new Algorithms().monteCarlo(ilosc_punktow);
 
-        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"
-                +String.format("%.9f",wartosc_pi));
+        Log.d(MainActivity.TAG, "<-------------pierwiastek---------------------->"
+                + String.format("%.9f", wartosc_pi));
     }
-
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {

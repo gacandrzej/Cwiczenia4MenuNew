@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.Objects;
+
 public class NewtonRaphson extends AppCompatActivity {
     Algorithms algorithms;
     @SuppressLint("MissingInflatedId")
@@ -20,7 +22,7 @@ public class NewtonRaphson extends AppCompatActivity {
         setContentView(R.layout.activity_newton_raphson);
         algorithms = new Algorithms();
         setSupportActionBar(findViewById(R.id.toolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         double l = intent.getDoubleExtra("liczba",0);
@@ -46,21 +48,21 @@ public class NewtonRaphson extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.losuj:
-                            algorithms.random6();
-                            return true;
-            case R.id.newtonraphson:
-                                    algorithms.newtonRaphson(25,0.001);
-                                    return true;
-           case R.id.montecarlo:
-                               algorithms.monteCarlo(1000000.0);
-                               return true;
-            case R.id.sortzliczanie:
-                                    algorithms.countingSort();
-                                    return true;
-            default:   return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+        if (itemId == R.id.losuj) {
+            algorithms.random6();
+            return true;
+        } else if (itemId == R.id.newtonraphson) {
+            algorithms.newtonRaphson(25, 0.001);
+            return true;
+        } else if (itemId == R.id.montecarlo) {
+            algorithms.monteCarlo(1000000.0);
+            return true;
+        } else if (itemId == R.id.sortzliczanie) {
+            algorithms.countingSort();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

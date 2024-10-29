@@ -1,6 +1,12 @@
 package com.example.cwiczenia4;
 
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -19,6 +25,40 @@ public class Algorithms {
         return a;
     }
     public void countingSort(){
+
+        StringBuilder text = new StringBuilder();
+        List<Integer> liczby = new ArrayList<>();
+        Map<Integer, Integer> liczbymap = new HashMap<>();
+
+        Random random = new Random();
+        for(int i = 0; i < 50; i++){
+            liczby.add(random.nextInt(100));
+        }
+
+        int highest = Collections.max(liczby);
+        for(int i = 0; i < highest; i++){
+            liczbymap.put(i, 0);
+        }
+        Log.i("sortowanie", String.valueOf(liczbymap));
+
+        for(Integer x : liczby){
+            if(liczbymap.containsKey(x))
+                liczbymap.replace(x, liczbymap.get(x) + 1);
+        }
+        Log.i("sortowanie", String.valueOf(liczbymap));
+        liczby.clear();
+
+        for(int i = 1; i < liczbymap.size(); i++){
+            for(int y = 0; y < liczbymap.get(i); y++){
+                liczby.add(i);
+            }
+        }
+
+        for(Integer x : liczby){
+            text.append(x);
+            text.append(" ");
+        }
+        Log.i(MainActivity.TAG, String.valueOf(liczby));
 
     }
     public double monteCarlo(double n){

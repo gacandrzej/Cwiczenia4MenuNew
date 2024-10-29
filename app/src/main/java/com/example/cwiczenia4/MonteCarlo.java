@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.Objects;
+
 public class MonteCarlo extends AppCompatActivity {
     Algorithms algorithms;
     @SuppressLint("MissingInflatedId")
@@ -20,7 +22,7 @@ public class MonteCarlo extends AppCompatActivity {
         setContentView(R.layout.activity_monte_carlo);
         algorithms = new Algorithms();
         setSupportActionBar(findViewById(R.id.toolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 

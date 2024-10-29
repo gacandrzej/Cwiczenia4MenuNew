@@ -63,4 +63,12 @@ public class NewtonRaphson extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        Log.v(MainActivity.TAG, "--------NewtonRaphson-------onSupportNavigateUp()");
+        finish();
+        return true;
+    }
+
+
 }

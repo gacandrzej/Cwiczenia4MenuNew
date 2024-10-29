@@ -65,7 +65,8 @@ public class MonteCarlo extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        Log.v("111111", "-----------------------onSupportNavigateUp()");
+        Log.v(MainActivity.TAG,
+                "-----MonteCarlo---------onSupportNavigateUp()");
         finish();
         return true;
     }

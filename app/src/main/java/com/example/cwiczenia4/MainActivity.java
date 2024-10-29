@@ -1,10 +1,6 @@
 package com.example.cwiczenia4;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,13 +9,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
-    Button newtonR;
     Algorithms algorithms;
     Button btn_newton;
     public static final String TAG = "Marcin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
         btn_newton = findViewById(R.id.btnnewtonraphson);
-        btn_newton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: ");
-                intentNewtonRaphson();
-            }
+        btn_newton.setOnClickListener(v -> {
+            Log.d(TAG, "onClick: ");
+            intentNewtonRaphson();
         });
         algorithms = new Algorithms();
     }
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu1, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -57,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.montecarlo) {
             intentMonteCarlo();
-
             Log.d(TAG, "onOptionsItemSelected: ");
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             return true;
@@ -77,28 +72,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void intentMonteCarlo() {
-        Intent intent = new Intent(this,MonteCarlo.class);
-        intent.putExtra("ilosc_punktow", 1000000.0);
+        EditText iloscPunktow = findViewById(R.id.iloscPunktow);
+        double ilPunktow = Double.parseDouble(String.valueOf(iloscPunktow.getText()));
+        Intent intent = new Intent(this, MonteCarlo.class);
+        intent.putExtra("ilosc_punktow", ilPunktow);
         startActivity(intent);
-        Log.v("menu123","<--------------- monteCarlo()");
+        Log.v(TAG, "<--------------- monteCarlo()");
     }
 
     private void aboutAuthor() {
         AlertDialog builder = new AlertDialog.Builder(this)
                 .setMessage("Author: Andrzej Gac")
                 .setTitle("---Simple alert application---")
-                .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Log.i("menu123","------------------------> ok");
-                    }
-                })
-                .setPositiveButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Log.i("menu123","------------------------> cancel");
-                    }
-                })
+                .setNegativeButton(R.string.ok, (dialog, which) -> Log.i(TAG, "------------------------> ok"))
+                .setPositiveButton(R.string.cancel, (dialog, which) -> Log.i(TAG, "------------------------> cancel"))
                 .create();
         builder.show();
     }
@@ -109,47 +96,14 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("liczba", 9.0);
         intent.putExtra("precyzja", 0.0001);
         startActivity(intent);
-        Log.v("menu123","<--------------- NewtonRaphson()");
+        Log.v(TAG, "<--------------- NewtonRaphson()");
     }
-
 
 
     public void LosujLiczby(View view) {
-
         Toast.makeText(this, "Test przycisku", Toast.LENGTH_SHORT).show();
-
-        Log.v(MainActivity.TAG,"<--------------- Test przycisku");
+        Log.v(MainActivity.TAG, "<--------------- Test przycisku");
     }
 
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart() called");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() called");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause() called");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop() called");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() called");
-    }
 }

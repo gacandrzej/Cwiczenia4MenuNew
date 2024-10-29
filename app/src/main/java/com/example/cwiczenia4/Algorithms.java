@@ -1,13 +1,6 @@
 package com.example.cwiczenia4;
 
 import android.util.Log;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -25,7 +18,9 @@ public class Algorithms {
         Log.d(MainActivity.TAG, "newtonRaphson() returned: " + a);
         return a;
     }
-    public void countingSort(){}
+    public void countingSort(){
+
+    }
     public double monteCarlo(double n){
         random = new Random();
         double T=0.0;

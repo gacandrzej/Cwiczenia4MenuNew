@@ -18,20 +18,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     Algorithms algorithms;
     Button btn_newton;
-    public static final String TAG = "Marcin";
+    public static final String TAG = "klasa3g";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setSupportActionBar(findViewById(R.id.toolbar));
-        Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
+
         btn_newton = findViewById(R.id.btnnewtonraphson);
         btn_newton.setOnClickListener(v -> {
             Log.d(TAG, "onClick: ");
             intentNewtonRaphson();
         });
         algorithms = new Algorithms();
+        Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
     }
 
     @Override
@@ -105,5 +106,33 @@ public class MainActivity extends AppCompatActivity {
         Log.v(MainActivity.TAG, "<--------------- Test przycisku");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    }
 }

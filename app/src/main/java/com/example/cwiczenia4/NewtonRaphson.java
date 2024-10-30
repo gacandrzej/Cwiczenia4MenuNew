@@ -1,5 +1,7 @@
 package com.example.cwiczenia4;
 
+import static com.example.cwiczenia4.MainActivity.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,12 +31,12 @@ public class NewtonRaphson extends AppCompatActivity {
         double prec = intent.getDoubleExtra("precyzja",0);
 
 
-        Log.d(MainActivity.TAG,"<-------------liczba i precyzja: "
+        Log.d(TAG,"<-------------liczba i precyzja: "
                 +String.format("%.9f", l)+" "+String.format("%.9f", prec));
 
         double pierwiastek = new Algorithms().newtonRaphson(l,prec);
 
-        Log.d(MainActivity.TAG,"<-------------pierwiastek---------------------->"+pierwiastek);
+        Log.d(TAG,"<-------------pierwiastek---------------------->"+pierwiastek);
     }
 
 
@@ -67,10 +69,38 @@ public class NewtonRaphson extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        Log.v(MainActivity.TAG, "--------NewtonRaphson-------onSupportNavigateUp()");
+        Log.v(TAG, "--------NewtonRaphson-------onSupportNavigateUp()");
         finish();
         return true;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "class NewtonRaphson onStart() called");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "class NewtonRaphson onResume() called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "class NewtonRaphson onPause() called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "class NewtonRaphson onStop() called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "class NewtonRaphson onDestroy() called");
+    }
 }

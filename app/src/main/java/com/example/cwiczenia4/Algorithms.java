@@ -24,7 +24,7 @@ public class Algorithms {
     /** @noinspection DataFlowIssue*/
     public void countingSort() {
 
-        StringBuilder text = new StringBuilder();
+
         List<Integer> liczby = new ArrayList<>();
         Map<Integer, Integer> liczbymap = new HashMap<>();
 
@@ -51,7 +51,7 @@ public class Algorithms {
                 liczby.add(i);
             }
         }
-
+        StringBuilder text = new StringBuilder();
         for (Integer x : liczby) {
             text.append(x);
             text.append(" ");

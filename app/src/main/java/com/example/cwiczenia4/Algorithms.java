@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Algorithms {
+    private static final String TAG = "Algorithms";
     public double newtonRaphson(double x, double d) {
         double a = 5;
         while (Math.abs(x / a - a) > d) {
@@ -60,6 +61,28 @@ public class Algorithms {
 
     }
 
+    public List<Integer> countingSort(List<Integer> input) {
+        Map<Integer, Integer> liczbymap = new HashMap<>();
+
+        int highest = Collections.max(input);
+        for (int i = 0; i <= highest; i++) {
+            liczbymap.put(i, 0);
+        }
+
+        for (Integer x : input) {
+            liczbymap.replace(x, liczbymap.get(x) + 1);
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i <= highest; i++) {
+            for (int y = 0; y < liczbymap.get(i); y++) {
+                result.add(i);
+            }
+        }
+
+        return result;
+    }
+
     public double monteCarlo(double n) {
         Random random = new Random();
         double T = 0.0;
@@ -82,7 +105,7 @@ public class Algorithms {
             treeSet.add(1 + random.nextInt(48));
         }
 
-        Log.d(MainActivity.TAG, "random6: list:" + treeSet);
+        Log.d(TAG, "random6: list:" + treeSet);
         return "";
     }
 

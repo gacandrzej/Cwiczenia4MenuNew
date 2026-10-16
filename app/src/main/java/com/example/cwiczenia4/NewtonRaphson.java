@@ -15,46 +15,63 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 public class NewtonRaphson extends AppCompatActivity {
     Algorithms algorithms;
+    StringBuilder sb = new StringBuilder();
+    TextView textViewWynik;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newton_raphson);
         algorithms = new Algorithms();
-        // Opcjonalna obsługa paska narzędzi (jeśli znajduje się w layout_action_bar)
+
+        // Zawsze inicjalizujemy widok, żeby nie był nullem
+        textViewWynik = findViewById(R.id.textViewWynik);
+
+        // Obsługa paska narzędzi
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true); // strzałka powrotu w lewym rogu
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }
 
         // Odbieranie danych przekazanych przez Intent
         Intent intent = getIntent();
-        double l = intent.getDoubleExtra("liczba", 0);
-        double prec = intent.getDoubleExtra("precyzja", 0);
+        if (intent != null && intent.hasExtra("liczba") && intent.hasExtra("precyzja")) {
+            double liczba = intent.getDoubleExtra("liczba", 0);
+            double precyzja = intent.getDoubleExtra("precyzja", 0);
 
-        Log.d(TAG, "<-------------liczba i precyzja: "
-                + String.format("%.9f", l) + " " + String.format("%.9f", prec));
+            Log.d(TAG, "<-------------liczba i precyzja: "
+                    + String.format("%.9f", liczba) + " " + String.format("%.9f", precyzja));
 
-        // Wywołanie algorytmu obliczeniowego
-        double pierwiastek = new Algorithms().newtonRaphson(l, prec);
+            // Wywołanie algorytmu obliczeniowego
+            double pierwiastek = new Algorithms().newtonRaphson(liczba, precyzja);
+            Log.d(TAG, "<-------------pierwiastek---------------------->" + pierwiastek);
 
-        Log.d(TAG, "<-------------pierwiastek---------------------->" + pierwiastek);
+            // Formatowanie wyników
+            String formatLiczba = String.format("%.2f", liczba);
+            String formatPrecyzja = String.format("%.7f", precyzja);
+            String formatPierwiastek = String.format("%.4f", pierwiastek);
 
-        // Wyświetlenie wyniku na ekranie w TextView (opcjonalnie, ale bardzo przydatne dla użytkownika)
-        TextView textViewWynik = findViewById(R.id.textViewWynik);
-        if (textViewWynik != null) {
-            String wynikTekst = "Obliczony pierwiastek:\n" + String.format("%.9f", pierwiastek);
-            textViewWynik.setText(wynikTekst);
+            // Wyświetlenie wyniku na ekranie
+            if (textViewWynik != null) {
+                sb.setLength(0);
+                sb.append("Liczba: ").append(formatLiczba)
+                        .append("\nprecyzja: ").append(formatPrecyzja)
+                        .append("\npierwiastek: ").append(formatPierwiastek);
+                textViewWynik.setText(sb.toString());
+            }
+        } else {
+            Log.d(TAG, "Brak wymaganych extras w Intent");
+            if (textViewWynik != null) {
+                textViewWynik.setText("Brak danych wejściowych");
+            }
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,7 +79,6 @@ public class NewtonRaphson extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu1, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

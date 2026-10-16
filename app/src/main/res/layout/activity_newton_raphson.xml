@@ -7,5 +7,14 @@
     tools:context=".NewtonRaphson">
 
     <include layout="@layout/layout_action_bar" />
-
+    <!-- Miejsce na wyświetlenie wyników obliczeń -->
+    <TextView
+        android:id="@+id/textViewWynik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutActionBar"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="18sp" />
 </RelativeLayout>

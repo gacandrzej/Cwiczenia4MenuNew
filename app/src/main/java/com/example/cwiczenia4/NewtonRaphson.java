@@ -4,6 +4,7 @@ import static com.example.cwiczenia4.MainActivity.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.Objects;
 
@@ -23,20 +25,34 @@ public class NewtonRaphson extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newton_raphson);
         algorithms = new Algorithms();
-        setSupportActionBar(findViewById(R.id.toolbar));
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        // Opcjonalna obsługa paska narzędzi (jeśli znajduje się w layout_action_bar)
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true); // strzałka powrotu w lewym rogu
+            }
+        }
 
+        // Odbieranie danych przekazanych przez Intent
         Intent intent = getIntent();
-        double l = intent.getDoubleExtra("liczba",0);
-        double prec = intent.getDoubleExtra("precyzja",0);
+        double l = intent.getDoubleExtra("liczba", 0);
+        double prec = intent.getDoubleExtra("precyzja", 0);
 
+        Log.d(TAG, "<-------------liczba i precyzja: "
+                + String.format("%.9f", l) + " " + String.format("%.9f", prec));
 
-        Log.d(TAG,"<-------------liczba i precyzja: "
-                +String.format("%.9f", l)+" "+String.format("%.9f", prec));
+        // Wywołanie algorytmu obliczeniowego
+        double pierwiastek = new Algorithms().newtonRaphson(l, prec);
 
-        double pierwiastek = new Algorithms().newtonRaphson(l,prec);
+        Log.d(TAG, "<-------------pierwiastek---------------------->" + pierwiastek);
 
-        Log.d(TAG,"<-------------pierwiastek---------------------->"+pierwiastek);
+        // Wyświetlenie wyniku na ekranie w TextView (opcjonalnie, ale bardzo przydatne dla użytkownika)
+        TextView textViewWynik = findViewById(R.id.textViewWynik);
+        if (textViewWynik != null) {
+            String wynikTekst = "Obliczony pierwiastek:\n" + String.format("%.9f", pierwiastek);
+            textViewWynik.setText(wynikTekst);
+        }
     }
 
 

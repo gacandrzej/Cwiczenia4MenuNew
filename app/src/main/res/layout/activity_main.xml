@@ -1,42 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/layout_action_bar" />
+    <!-- 1. Dołączenie nagłówka/toolbara -->
+    <include
+        android:id="@+id/layoutActionBar"
+        layout="@layout/layout_action_bar" />
 
+    <!-- 2. Etykieta nad polem wprowadzania -->
     <TextView
-        android:layout_width="194dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="200dp"
-        android:text="Podaj ilość punktów:" />
+        android:id="@+id/textViewPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="280dp"
+        android:text="Podaj liczbę (dla metody Newtona-Raphsona):"
+        android:textSize="16sp" />
+
+    <!-- 3. Pole wprowadzania punktów -->
     <EditText
         android:id="@+id/iloscPunktow"
-        android:layout_width="197dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="200dp"
-        android:layout_marginTop="200dp"
-        android:hint="Podaj ilość punktów dla MonteCarlo"
+        android:layout_below="@id/textViewPrompt"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Wpisz liczbę do pierwiastkowania"
         android:inputType="numberDecimal"
         android:minHeight="48dp" />
 
-  <Button
-    android:id="@+id/button1"
-    android:onClick="LosujLiczby"
-    android:text="Losuj 6 liczb"
-      android:layout_gravity="bottom|end"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-  <Button
-      android:id="@+id/btnnewtonraphson"
-      android:text="Newton-Raphson"
-      android:layout_gravity="center|start"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/textViewPrompt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iloscPunktow"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Podaj precyzję:"
+        android:textSize="16sp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <EditText
+        android:id="@+id/precyzja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPrompt2"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Wpisz liczbę w formacie np.: 0.001"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+    <!-- 4. Przycisk Newton-Raphson (po kliknięciu przechodzi do nowej aktywności) -->
+    <Button
+        android:id="@+id/btnnewtonraphson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/precyzja"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Oblicz metodą Newtona-Raphsona" />
+
+    <!-- 5. Przycisk Losuj 6 liczb (umieszczony na dole ekranu) -->
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="LosujLiczby"
+        android:text="Losuj 6 liczb" />
+
+</RelativeLayout>

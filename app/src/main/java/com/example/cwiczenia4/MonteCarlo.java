@@ -33,7 +33,7 @@ public class MonteCarlo extends AppCompatActivity {
 
         double wartosc_pi = new Algorithms().monteCarlo(ilosc_punktow);
 
-        Log.d(MainActivity.TAG, "<-------------pierwiastek---------------------->"
+        Log.d(MainActivity.TAG, "<------------- wartosc pi: ---------------------->"
                 + String.format("%.9f", wartosc_pi));
     }
 

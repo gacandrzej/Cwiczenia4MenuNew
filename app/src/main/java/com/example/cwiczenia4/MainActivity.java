@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu1, menu);
+        menuInflater.inflate(R.menu.menu2, menu);
         return true;
     }
 
@@ -92,12 +92,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void intentNewtonRaphson() {
-        Toast.makeText(this, "NewtonRaphson()", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, NewtonRaphson.class);
-        intent.putExtra("liczba", 9.0);
-        intent.putExtra("precyzja", 0.0001);
-        startActivity(intent);
-        Log.v(TAG, "<--------------- NewtonRaphson()");
+        // 1. Pobranie referencji do pól tekstowych z layoutu
+        EditText editLiczba = findViewById(R.id.iloscPunktow);
+        EditText editPrecyzja = findViewById(R.id.precyzja);
+
+        // 2. Pobranie tekstu i zabezpieczenie przed pustymi polami / błędnym formatem
+        String tekstLiczba = editLiczba.getText().toString().trim();
+        String tekstPrecyzja = editPrecyzja.getText().toString().trim();
+
+        if (tekstLiczba.isEmpty() || tekstPrecyzja.isEmpty()) {
+            Toast.makeText(this, "Proszę uzupełnić oba pola!", Toast.LENGTH_SHORT).show();
+            return; // Przerywamy działanie metody, jeśli brakuje danych
+        }
+
+        try {
+            // Konwersja tekstu na double (uwaga: zamieniamy ewentualne przecinki na kropki,
+            // żeby Double.parseDouble nie rzuciło wyjątku, jeśli użytkownik wpisze np. "0,001")
+            double liczba = Double.parseDouble(tekstLiczba.replace(",", "."));
+            double precyzja = Double.parseDouble(tekstPrecyzja.replace(",", "."));
+
+            // 3. Przekazanie wartości do Intentu
+            Toast.makeText(this, "NewtonRaphson()", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, NewtonRaphson.class);
+            intent.putExtra("liczba", liczba);
+            intent.putExtra("precyzja", precyzja);
+            startActivity(intent);
+
+            Log.v(TAG, "<--------------- NewtonRaphson()");
+
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Wprowadzono niepoprawny format liczby!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

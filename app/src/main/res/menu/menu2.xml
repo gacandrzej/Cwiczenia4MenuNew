@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/losuj"
+        android:icon="@drawable/baseline_arrow_circle_up_24"
+        android:title="@string/losuj"
+        app:showAsAction="never" />
+
+    <!-- Pozycja podmenu "Algorytmy" -->
+    <item
+        android:title="@string/algorytmy">
+        <menu>
+            <!-- Przeniesiona pozycja Newton-Raphson -->
+            <item
+                android:id="@+id/newtonraphson"
+                android:icon="@drawable/baseline_arrow_circle_up_24"
+                android:title="@string/NewtonRaphson"
+                app:showAsAction="never" />
+
+            <!-- Pozycja MonteCarlo wewnątrz podmenu -->
+            <item
+                android:id="@+id/montecarlo"
+                android:icon="@drawable/baseline_align_vertical_top_24"
+                android:title="@string/MonteCarlo"
+                app:showAsAction="never" />
+            <!-- Pozycja sortowaniePrzezZliczanie wewnątrz podmenu -->
+            <item
+                android:id="@+id/sortzliczanie"
+                android:icon="@drawable/baseline_airport_shuttle_24"
+                android:title="@string/sortowaniePrzezZliczanie"
+                app:showAsAction="never" />
+
+        </menu>
+    </item>
+
+
+
+    <item
+        android:id="@+id/aboutAuthor"
+        android:icon="@drawable/baseline_align_vertical_top_24"
+        android:title="@string/oAutorze"
+        app:showAsAction="never" />
+
+</menu>
